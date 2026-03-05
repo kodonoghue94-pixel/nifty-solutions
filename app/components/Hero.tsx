@@ -53,7 +53,7 @@ export default function Hero({data}: {data: HeroData}) {
         .headline-row:nth-child(2) span { animation-delay: 0.35s; }
 
         .hero-headline-row { display: grid; grid-template-columns: 1fr 240px; gap: 0 48px; align-items: center; }
-        .hero-bottom { display: flex; flex-direction: row; gap: 48px; align-items: flex-end; margin-top: 64px; opacity: 0; animation: fade-up 0.7s ease forwards 0.9s; }
+        .hero-bottom { display: flex; flex-direction: row; gap: 48px; align-items: flex-end; margin-top: 32px; opacity: 0; animation: fade-up 0.7s ease forwards 0.9s; }
         .hero-sub { font-size: 17px; font-weight: 300; line-height: 1.6; color: #666; max-width: 420px; }
         .hero-sub strong { color: var(--black); font-weight: 500; }
         .hero-ctas { display: flex; gap: 16px; align-items: center; flex-shrink: 0; }
@@ -75,13 +75,6 @@ export default function Hero({data}: {data: HeroData}) {
         .stat-num { font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--black); margin-bottom: 8px; }
         .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; line-height: 1.5; white-space: pre-line; }
 
-        .clients { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 24px; opacity: 0; animation: fade-up 0.6s ease forwards 1.5s; }
-        .clients-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #bbb; white-space: nowrap; flex-shrink: 0; }
-        .clients-divider { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
-        .clients-names { display: flex; gap: 40px; flex-wrap: wrap; }
-        .client-name { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #ccc; transition: color 0.2s; cursor: default; }
-        .client-name:hover { color: var(--black); }
-
         .hero-visual { width: 220px; height: 220px; opacity: 0; animation: fade-up 0.8s ease forwards 0.8s; flex-shrink: 0; }
         .orbit-ring { animation: orbit-spin 18s linear infinite; transform-origin: 110px 110px; }
         .orbit-ring-reverse { animation: orbit-spin 24s linear infinite reverse; transform-origin: 110px 110px; }
@@ -96,31 +89,26 @@ export default function Hero({data}: {data: HeroData}) {
 
         /* ── MOBILE ── */
         @media (max-width: 768px) {
-  .nav { padding: 20px 24px; }
-  .nav-links { display: none; }
-  .hero-section { min-height: auto !important; padding-top: 100px !important; padding-left: 24px !important; padding-right: 24px !important; padding-bottom: 0 !important; }
-  .hero-section > div { padding-bottom: 40px !important; }
-  .hero-headline-row { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 32px; margin-top: 40px; }
-  .hero-ctas { flex-wrap: wrap; }
-  .eyebrow { flex-wrap: wrap; gap: 6px; }
-  .eyebrow { flex-wrap: wrap; }
-.eyebrow-sep { display: none; }
-.eyebrow-dot { display: none; }
-  .ticker-wrap { display: none; }
-  .stats { grid-template-columns: repeat(2, 1fr); margin: 0 24px; }
-  .stat { padding: 28px 20px; }
-  .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(3) { border-top: 1px solid var(--border); border-right: 1px solid var(--border); }
-  .stat:nth-child(4) { border-top: 1px solid var(--border); }
-  .stat-num { font-size: 36px; }
-  .clients { padding: 32px 24px; flex-wrap: wrap; gap: 16px; }
-  .clients-names { gap: 20px; }
-  .clients-divider { display: none; }
-  .eyebrow-line2 { display: block; width: 100%; padding-left: 0px; }
-.eyebrow-sep { display: none; }
-}
+          .nav { padding: 20px 24px; }
+          .nav-links { display: none; }
+          .hero-section { min-height: auto !important; padding-top: 100px !important; padding-left: 24px !important; padding-right: 24px !important; padding-bottom: 0 !important; }
+          .hero-section > div { padding-bottom: 40px !important; }
+          .hero-headline-row { grid-template-columns: 1fr; }
+          .hero-visual { display: none; }
+          .hero-bottom { flex-direction: column; align-items: flex-start; gap: 32px; margin-top: 40px; }
+          .hero-ctas { flex-wrap: wrap; }
+          .eyebrow { flex-wrap: wrap; gap: 6px; }
+          .eyebrow-sep { display: none; }
+          .eyebrow-dot { display: none; }
+          .eyebrow-line2 { display: block; width: 100%; padding-left: 0; }
+          .ticker-wrap { display: none; }
+          .stats { grid-template-columns: repeat(2, 1fr); margin: 0 24px; }
+          .stat { padding: 28px 20px; }
+          .stat:nth-child(2) { border-right: none; }
+          .stat:nth-child(3) { border-top: 1px solid var(--border); border-right: 1px solid var(--border); }
+          .stat:nth-child(4) { border-top: 1px solid var(--border); }
+          .stat-num { font-size: 36px; }
+        }
       `}</style>
 
       <nav className="nav">
@@ -135,7 +123,7 @@ export default function Hero({data}: {data: HeroData}) {
         <button className="nav-cta">Book a Call →</button>
       </nav>
 
-      <section className="hero-section" style={{minHeight: '100vh', display: 'grid', gridTemplateRows: '1fr auto', padding: '0 48px', paddingTop: 120}}>
+      <section className="hero-section" style={{minHeight: 'auto', display: 'grid', gridTemplateRows: '1fr auto', padding: '0 48px', paddingTop: 120}}>
         <div style={{display: 'flex', flexDirection: 'column', paddingBottom: 80}}>
           <div className="eyebrow">
   <span className="eyebrow-dot" />
@@ -222,16 +210,6 @@ export default function Hero({data}: {data: HeroData}) {
       </div>
 
       <div style={{height: 1, background: 'var(--border)', margin: '0 48px'}} />
-
-      <div className="clients">
-        <span className="clients-label">Trusted by</span>
-        <div className="clients-divider" />
-        <div className="clients-names">
-          {(data.clients || ['Netflix', 'Paramount', 'Disney', 'ABC', 'Discovery']).map(name => (
-            <span key={name} className="client-name">{name}</span>
-          ))}
-        </div>
-      </div>
     </>
   )
 }
