@@ -34,6 +34,7 @@ export default function Hero({data}: {data: HeroData}) {
         :root { --orange: #FF5C00; --black: #0A0A0A; --off-white: #F5F4F1; --border: #E2E0DC; }
         body { font-family: 'Space Grotesk', sans-serif; background: var(--off-white); color: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.025; pointer-events: none; z-index: 1000; }
+
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: var(--off-white); }
         .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.04em; color: var(--black); text-decoration: none; }
         .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -41,49 +42,87 @@ export default function Hero({data}: {data: HeroData}) {
         .nav-links li:hover { color: var(--black); }
         .nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: white; background: var(--black); border: none; padding: 9px 20px; border-radius: 100px; cursor: pointer; transition: background 0.2s; }
         .nav-cta:hover { background: var(--orange); }
+
         .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: 10px; margin-bottom: 40px; opacity: 0; animation: fade-up 0.6s ease forwards 0.1s; }
         .eyebrow-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
-        .headline { font-family: 'Space Grotesk', sans-serif; font-size: clamp(64px, 9.5vw, 148px); font-weight: 700; line-height: 0.95; letter-spacing: -0.04em; color: var(--black); overflow: visible; padding-bottom: 8px; display: block; }
+
+        .headline { font-family: 'Space Grotesk', sans-serif; font-size: clamp(52px, 9.5vw, 148px); font-weight: 700; line-height: 0.95; letter-spacing: -0.04em; color: var(--black); overflow: visible; padding-bottom: 8px; display: block; }
         .headline-row { display: block; overflow: visible; }
         .headline-row span { display: block; transform: translateY(110%); animation: slide-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .headline-row:nth-child(1) span { animation-delay: 0.2s; }
         .headline-row:nth-child(2) span { animation-delay: 0.35s; }
+
         .hero-headline-row { display: grid; grid-template-columns: 1fr 240px; gap: 0 48px; align-items: center; }
         .hero-bottom { display: flex; flex-direction: row; gap: 48px; align-items: flex-end; margin-top: 64px; opacity: 0; animation: fade-up 0.7s ease forwards 0.9s; }
         .hero-sub { font-size: 17px; font-weight: 300; line-height: 1.6; color: #666; max-width: 420px; }
         .hero-sub strong { color: var(--black); font-weight: 500; }
         .hero-ctas { display: flex; gap: 16px; align-items: center; flex-shrink: 0; }
+
         .btn-primary { background: var(--orange); color: white; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 100px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
         .btn-primary:hover { background: #e85200; transform: scale(1.03); }
         .btn-ghost { font-size: 14px; font-weight: 500; color: #555; cursor: pointer; background: none; border: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
         .btn-ghost:hover { color: var(--black); }
+
         .ticker-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; padding: 14px 0; opacity: 0; animation: fade-up 0.6s ease forwards 1.1s; }
         .ticker-track { display: flex; animation: ticker 28s linear infinite; white-space: nowrap; }
         .ticker-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; padding: 0 40px; display: inline-flex; align-items: center; gap: 40px; flex-shrink: 0; }
         .ticker-item::after { content: '·'; color: var(--orange); }
+
         .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); margin: 0 48px; opacity: 0; animation: fade-up 0.7s ease forwards 1.3s; }
         .stat { padding: 40px 32px; border-right: 1px solid var(--border); transition: background 0.3s; }
         .stat:last-child { border-right: none; }
         .stat:hover { background: white; }
         .stat-num { font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--black); margin-bottom: 8px; }
         .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; line-height: 1.5; white-space: pre-line; }
+
         .clients { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 24px; opacity: 0; animation: fade-up 0.6s ease forwards 1.5s; }
         .clients-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #bbb; white-space: nowrap; flex-shrink: 0; }
         .clients-divider { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
         .clients-names { display: flex; gap: 40px; flex-wrap: wrap; }
         .client-name { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #ccc; transition: color 0.2s; cursor: default; }
         .client-name:hover { color: var(--black); }
+
         .hero-visual { width: 220px; height: 220px; opacity: 0; animation: fade-up 0.8s ease forwards 0.8s; flex-shrink: 0; }
         .orbit-ring { animation: orbit-spin 18s linear infinite; transform-origin: 110px 110px; }
         .orbit-ring-reverse { animation: orbit-spin 24s linear infinite reverse; transform-origin: 110px 110px; }
         .core-pulse { animation: core-breathe 3s ease-in-out infinite; transform-origin: 110px 110px; }
+
         @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.6); } }
         @keyframes slide-up { to { transform: translateY(0); } }
         @keyframes fade-up { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
         @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes core-breathe { 0%,100% { transform:scale(1); opacity:1; } 50% { transform:scale(1.08); opacity:0.8; } }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+  .nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .hero-section { min-height: auto !important; padding-top: 100px !important; padding-left: 24px !important; padding-right: 24px !important; padding-bottom: 0 !important; }
+  .hero-section > div { padding-bottom: 40px !important; }
+  .hero-headline-row { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 32px; margin-top: 40px; }
+  .hero-ctas { flex-wrap: wrap; }
+  .eyebrow { flex-wrap: wrap; gap: 6px; }
+  .eyebrow { flex-wrap: wrap; }
+.eyebrow-sep { display: none; }
+.eyebrow-dot { display: none; }
+  .ticker-wrap { display: none; }
+  .stats { grid-template-columns: repeat(2, 1fr); margin: 0 24px; }
+  .stat { padding: 28px 20px; }
+  .stat:nth-child(2) { border-right: none; }
+  .stat:nth-child(3) { border-top: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .stat:nth-child(4) { border-top: 1px solid var(--border); }
+  .stat-num { font-size: 36px; }
+  .clients { padding: 32px 24px; flex-wrap: wrap; gap: 16px; }
+  .clients-names { gap: 20px; }
+  .clients-divider { display: none; }
+  .eyebrow-line2 { display: block; width: 100%; padding-left: 0px; }
+.eyebrow-sep { display: none; }
+}
       `}</style>
+
       <nav className="nav">
         <a href="/" className="nav-logo">
           nifty<span style={{color: 'var(--orange)'}}>.</span>
@@ -96,15 +135,14 @@ export default function Hero({data}: {data: HeroData}) {
         <button className="nav-cta">Book a Call →</button>
       </nav>
 
-      <section style={{minHeight: '100vh', display: 'grid', gridTemplateRows: '1fr auto', padding: '0 48px', paddingTop: 120}}>
+      <section className="hero-section" style={{minHeight: '100vh', display: 'grid', gridTemplateRows: '1fr auto', padding: '0 48px', paddingTop: 120}}>
         <div style={{display: 'flex', flexDirection: 'column', paddingBottom: 80}}>
-
           <div className="eyebrow">
-            <span className="eyebrow-dot" />
-            {data.eyebrow1 || 'Gold Certified Airtable Partner'}
-            <span style={{color: '#ccc'}}>·</span>
-            {data.eyebrow2 || 'APAC #1'}
-          </div>
+  <span className="eyebrow-dot" />
+  <span className="eyebrow-line1">{data.eyebrow1 || 'Gold Certified Airtable Partner'}</span>
+  <span className="eyebrow-sep" style={{color: '#ccc'}}>·</span>
+  <span className="eyebrow-line2">{data.eyebrow2 || 'APAC #1'}</span>
+</div>
 
           <div className="hero-headline-row">
             <h1 className="headline">
@@ -121,7 +159,6 @@ export default function Hero({data}: {data: HeroData}) {
                 </>
               )}
             </h1>
-
             <div className="hero-visual">
               <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%', height:'100%', overflow:'visible'}}>
                 <circle cx="110" cy="110" r="100" stroke="#E2E0DC" strokeWidth="1" strokeDasharray="4 6"/>
@@ -178,9 +215,7 @@ export default function Hero({data}: {data: HeroData}) {
           {number: 'Top 5', label: 'worldwide\nAirtable partner'},
         ]).map((stat, i) => (
           <div key={i} className="stat">
-            <div className="stat-num" style={{color: i === 0 ? 'var(--orange)' : 'var(--black)'}}>
-              {stat.number}
-            </div>
+            <div className="stat-num" style={{color: i === 0 ? 'var(--orange)' : 'var(--black)'}}>{stat.number}</div>
             <div className="stat-label">{stat.label}</div>
           </div>
         ))}
